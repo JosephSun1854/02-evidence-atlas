@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#183d3b" />
+    <meta
+      name="description"
+      content="Evidence Atlas: a local-first Chinese/English BM25 evidence retrieval and claim notebook for social law and AI governance research."
+    />
+    <title>02 · Evidence Atlas / 证据图谱</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23183d3b'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia' font-size='32' fill='%23fffef8'%3E02%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="engine.js" defer></script>
+    <script src="sample-corpus.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至检索 / Skip to search</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="https://josephsun1854.github.io/JosephSun1854/"
+          ><span class="brand-mark">L</span>LAW × AI</a
+        >
+        <nav class="suite-nav" aria-label="研究工具 / Research tools">
+          <a href="https://josephsun1854.github.io/01-citation-audit/"
+            >01 · 引注 / Citations</a
+          >
+          <a
+            href="https://josephsun1854.github.io/02-evidence-atlas/"
+            aria-current="page"
+            >02 · 证据 / Evidence</a
+          >
+          <a href="https://josephsun1854.github.io/03-research-roadmap/"
+            >03 · 研究 / Roadmap</a
+          >
+          <a href="https://josephsun1854.github.io/04-literature-library/"
+            >04 · 文献 / Library</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main class="app-shell" id="main">
+      <section class="hero" aria-labelledby="pageTitle">
+        <div>
+          <div class="eyebrow">02 / RESEARCH EVIDENCE · 社会法与 AI 治理</div>
+          <h1 id="pageTitle">
+            证据图谱 <span class="english-title">Evidence Atlas</span>
+          </h1>
+          <p>
+            从原文段落开始，建立可复核的论断与证据关系。<br /><span lang="en"
+              >Retrieve source paragraphs. Keep a traceable claim–evidence
+              notebook.</span
+            >
+          </p>
+        </div>
+        <div class="hero-actions">
+          <span class="badge">本地保存 / Local only</span
+          ><span class="badge">BM25 · 中英检索</span>
+        </div>
+      </section>
+      <div class="scope-note">
+        检索分数衡量文本匹配，不能判断法律效力或论断真伪。v1
+        不调用大语言模型。<span lang="en"
+          >Scores measure textual relevance, not legal validity or truth. No LLM
+          service in v1.</span
+        >
+      </div>
+      <p id="storageWarning" class="storage-warning" role="alert" hidden></p>
+      <div
+        class="stats"
+        id="stats"
+        aria-label="语料概览 / Corpus overview"
+      ></div>
+      <div class="layout atlas-layout">
+        <aside class="corpus-sidebar">
+          <section class="panel">
+            <div class="section-head">
+              <h2>语料 <span class="subheading">Corpus</span></h2>
+              <button
+                id="addDocument"
+                type="button"
+                class="compact-button"
+                aria-label="添加文档 / Add document"
+              >
+                ＋
+              </button>
+            </div>
+            <p class="note">
+              导入你有权使用的文本；空行分隔段落。<span lang="en"
+                >Use text you may lawfully access; blank lines separate
+                paragraphs.</span
+              >
+            </p>
+            <div class="actions corpus-actions">
+              <button id="importTexts" type="button">导入 TXT / MD</button>
+              <button id="loadDemo" type="button">教学示例 / Demo</button>
+            </div>
+            <input
+              id="textFiles"
+              type="file"
+              accept=".txt,.md,text/plain,text/markdown"
+              multiple
+              hidden
+            />
+            <div id="documentList" class="document-list"></div>
+            <p class="note corpus-limit">
+              60 份文档 · 每份 12 万字元<br />60 documents · 120k characters
+              each
+            </p>
+          </section>
+          <section class="panel compact-panel">
+            <h3>可复现实验 <span class="subheading">Evaluation</span></h3>
+            <p class="note">
+              固定合成语料，30 个中英文查询，含 6 个改写挑战。<span lang="en"
+                >30 fixed queries, including 6 paraphrase challenges; BM25 vs.
+                token frequency.</span
+              >
+            </p>
+            <button id="runBenchmark" type="button">
+              运行基准 / Run benchmark
+            </button>
+            <a
+              class="method-link"
+              href="https://github.com/JosephSun1854/02-evidence-atlas/blob/main/docs/method.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              >方法与边界 / Method & limits ↗</a
+            >
+          </section>
+        </aside>
+        <div class="research-workspace">
+          <section class="panel" aria-labelledby="searchHeading">
+            <div class="section-head">
+              <h2 id="searchHeading">
+                寻找证据 <span class="subheading">Retrieve</span>
+              </h2>
+              <span class="eyebrow">01 / QUERY</span>
+            </div>
+            <form id="searchForm">
+              <label for="query"
+                >研究问题或关键词 / Research question or keywords</label
+              >
+              <div class="query-row">
+                <input
+                  id="query"
+                  maxlength="500"
+                  placeholder="例如：大语言模型 福利申请 人工复核"
+                  autocomplete="off"
+                /><button type="submit" class="primary">检索 / Search</button>
+              </div>
+              <div class="search-options">
+                <label for="method">方法 / Method</label
+                ><select id="method">
+                  <option value="bm25">BM25 · k₁ 1.2 / b 0.75</option>
+                  <option value="keyword">词频基线 / Token-frequency</option>
+                </select>
+                <label for="resultLimit">结果 / Results</label
+                ><select id="resultLimit">
+                  <option value="5">5</option>
+                  <option value="10" selected>10</option>
+                  <option value="20">20</option>
+                </select>
+              </div>
+            </form>
+            <div class="suggested-queries">
+              <span>试试 / Try</span
+              ><button type="button" data-query="福利申请 资格判断 人工复核">
+                福利 × 人工复核</button
+              ><button
+                type="button"
+                data-query="bias audit evaluation metrics reproducibility"
+              >
+                Bias audit</button
+              ><button type="button" data-query="训练语料最小化 重新识别风险">
+                训练语料 × 隐私
+              </button>
+            </div>
+            <p
+              id="searchSummary"
+              class="note"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <div id="results" class="results-list"></div>
+          </section>
+          <section class="panel" aria-labelledby="notebookHeading">
+            <div class="section-head">
+              <h2 id="notebookHeading">
+                论断与证据 <span class="subheading">Notebook</span>
+              </h2>
+              <span class="eyebrow">02 / ANNOTATE</span>
+            </div>
+            <p class="note">
+              关系由你判断。摘录按保存时版本保留，原文编辑后会提示变化。<span
+                lang="en"
+                >You assess the relationship. Saved quotes remain intact when
+                sources change.</span
+              >
+            </p>
+            <div class="actions export-actions">
+              <button id="exportMarkdown" type="button">
+                导出笔记 / Markdown</button
+              ><button id="exportCitations" type="button">
+                来源定位 / Citations</button
+              ><button id="exportJson" type="button">备份 / JSON</button
+              ><button id="importBackup" type="button">恢复 / Restore</button>
+            </div>
+            <input
+              id="backupFile"
+              type="file"
+              accept=".json,application/json"
+              hidden
+            />
+            <div id="notebook" class="notebook-list"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <span>02 · Evidence Atlas · 研究辅助 / Research aid</span
+      ><span
+        ><a
+          href="https://github.com/JosephSun1854/02-evidence-atlas"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Source · MIT ↗</a
+        >
+        · 无网络上传 / No uploads</span
+      >
+    </footer>
+    <dialog id="documentDialog" aria-labelledby="documentDialogTitle">
+      <form id="documentForm">
+        <div class="dialog-head">
+          <h2 id="documentDialogTitle">添加文档 / Add document</h2>
+          <button
+            type="button"
+            data-close="documentDialog"
+            aria-label="关闭 / Close"
+          >
+            ×
+          </button>
+        </div>
+        <input id="documentId" type="hidden" />
+        <div class="field">
+          <label for="documentTitle">标题 / Title</label
+          ><input id="documentTitle" maxlength="140" required />
+        </div>
+        <div class="field">
+          <label for="documentUrl"
+            >来源链接（可选）/ Source URL (optional)</label
+          ><input
+            id="documentUrl"
+            type="url"
+            maxlength="2000"
+            placeholder="https://..."
+          />
+          <p class="note">
+            仅接受 http(s) 链接；填写链接不代表来源已经核实。 / A supplied link
+            is not verified authority.
+          </p>
+        </div>
+        <div class="field">
+          <label for="documentContent">原文 / Source text</label
+          ><textarea
+            id="documentContent"
+            maxlength="120000"
+            rows="12"
+            required
+            placeholder="空行分隔段落 / Separate paragraphs with blank lines"
+          ></textarea>
+        </div>
+        <p id="documentEditNotice" class="note" hidden>
+          已有证据摘录将保留原始快照。编辑教学样本后，文档将标为用户材料。 /
+          Saved evidence keeps its original snapshot. Edited demo text becomes
+          user material.
+        </p>
+        <div class="actions dialog-actions">
+          <button type="button" data-close="documentDialog">
+            取消 / Cancel</button
+          ><button class="primary" type="submit">保存 / Save</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="evidenceDialog" aria-labelledby="evidenceDialogTitle">
+      <form id="evidenceForm">
+        <div class="dialog-head">
+          <h2 id="evidenceDialogTitle">保存证据 / Save evidence</h2>
+          <button
+            type="button"
+            data-close="evidenceDialog"
+            aria-label="关闭 / Close"
+          >
+            ×
+          </button>
+        </div>
+        <input id="evidenceId" type="hidden" />
+        <p id="evidenceSource" class="note"></p>
+        <blockquote id="evidenceExcerpt" class="evidence-preview"></blockquote>
+        <div class="field">
+          <label for="evidenceClaim">你的论断 / Your claim</label
+          ><textarea
+            id="evidenceClaim"
+            maxlength="2000"
+            rows="3"
+            required
+            placeholder="这段材料与什么研究论断有关？ / Which claim does this passage relate to?"
+          ></textarea>
+        </div>
+        <div class="field">
+          <label for="evidenceRelation"
+            >人工判断的关系 / Human-assessed relationship</label
+          ><select id="evidenceRelation">
+            <option value="needs-review">待复核 / Needs review</option>
+            <option value="support">支持 / Supports</option>
+            <option value="oppose">反对 / Opposes</option>
+            <option value="context">背景 / Context</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="evidenceNote">批注 / Annotation</label
+          ><textarea
+            id="evidenceNote"
+            maxlength="4000"
+            rows="3"
+            placeholder="适用条件、反例、待核验之处…… / Conditions, counterexamples, verification needs…"
+          ></textarea>
+        </div>
+        <div class="actions dialog-actions">
+          <button type="button" data-close="evidenceDialog">
+            取消 / Cancel</button
+          ><button type="submit" class="primary">保存 / Save</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      id="benchmarkDialog"
+      aria-labelledby="benchmarkHeading"
+      class="benchmark-dialog"
+    >
+      <div class="dialog-head">
+        <h2 id="benchmarkHeading">检索基准 / Retrieval benchmark</h2>
+        <button
+          type="button"
+          data-close="benchmarkDialog"
+          aria-label="关闭 / Close"
+        >
+          ×
+        </button>
+      </div>
+      <p class="note">
+        独立使用内置的 12 份合成文档与 30 个预设查询，不改变你的语料；含 6
+        个词语不同的改写挑战。结果仅描述此教学数据集。<span lang="en"
+          >Runs on 12 fixed synthetic documents and 30 preset queries, including
+          6 paraphrase challenges; your corpus is unchanged. Results describe
+          this educational set only.</span
+        >
+      </p>
+      <div id="benchmarkSummary" class="benchmark-summary"></div>
+      <div id="benchmarkRows" class="table-scroll"></div>
+      <div class="actions">
+        <button id="exportBenchmark" type="button">
+          导出报告 / Export report</button
+        ><button type="button" data-close="benchmarkDialog">
+          关闭 / Close
+        </button>
+      </div>
+    </dialog>
+    <div
+      id="status"
+      class="status-bar"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></div>
+    <noscript
+      ><p class="panel">
+        此工具需要启用 JavaScript。 / Enable JavaScript to use this tool.
+      </p></noscript
+    >
+  </body>
+</html>

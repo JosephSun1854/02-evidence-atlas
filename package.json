@@ -1,0 +1,15 @@
+{
+  "name": "02-evidence-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Auditable local-first legal research evidence retrieval and notebook",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/engine.test.js",
+    "benchmark": "node tests/benchmark.js",
+    "check": "node --check engine.js && node --check app.js && node --check sample-corpus.js"
+  }
+}

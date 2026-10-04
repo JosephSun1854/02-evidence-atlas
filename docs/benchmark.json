@@ -1,0 +1,960 @@
+{
+  "version": 1,
+  "corpus": "synthetic-social-law-ai-v1",
+  "documents": 12,
+  "paragraphs": 36,
+  "cases": 30,
+  "caveat": "Educational synthetic lexical-retrieval benchmark; no legal authority or generalization claim. Includes 6 paraphrase challenges.",
+  "parameters": {
+    "k1": 1.2,
+    "b": 0.75,
+    "recallCutoff": 5,
+    "mrrRankingLimit": 100
+  },
+  "reports": [
+    {
+      "method": "bm25",
+      "k": 5,
+      "count": 30,
+      "recallAtK": 0.93333333,
+      "mrr": 0.94097222,
+      "rows": [
+        {
+          "id": "zh-01",
+          "query": "招聘筛选 年龄歧视 错误排除率",
+          "relevant": [
+            "demo-hiring:p1"
+          ],
+          "top": [
+            "demo-hiring:p1",
+            "demo-audit:p3",
+            "demo-drift:p2",
+            "demo-audit:p1",
+            "demo-hiring:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-01",
+          "query": "hiring screening age discrimination false rejection",
+          "relevant": [
+            "demo-hiring:p1"
+          ],
+          "top": [
+            "demo-hiring:p1",
+            "demo-audit:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-02",
+          "query": "工资核验 计价规则 原始工时",
+          "relevant": [
+            "demo-wages:p2"
+          ],
+          "top": [
+            "demo-wages:p2",
+            "demo-insurance:p2",
+            "demo-welfare:p1",
+            "demo-versions:p2",
+            "demo-accessibility:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-02",
+          "query": "wage verification pricing versions working hours",
+          "relevant": [
+            "demo-wages:p2"
+          ],
+          "top": [
+            "demo-wages:p2",
+            "demo-wages:p3",
+            "demo-accessibility:p3",
+            "demo-insurance:p2",
+            "demo-audit:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-03",
+          "query": "跨地区 社会保险 缴费衔接",
+          "relevant": [
+            "demo-insurance:p1"
+          ],
+          "top": [
+            "demo-insurance:p1",
+            "demo-accessibility:p1",
+            "demo-privacy:p1",
+            "demo-insurance:p2",
+            "demo-welfare:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-03",
+          "query": "social insurance contribution portability regions",
+          "relevant": [
+            "demo-insurance:p1"
+          ],
+          "top": [
+            "demo-insurance:p1",
+            "demo-insurance:p2",
+            "demo-accessibility:p1",
+            "demo-privacy:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-04",
+          "query": "偏差审计 测试集 标注指标",
+          "relevant": [
+            "demo-audit:p2"
+          ],
+          "top": [
+            "demo-audit:p2",
+            "demo-audit:p1",
+            "demo-drift:p3",
+            "demo-audit:p3",
+            "demo-drift:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-04",
+          "query": "bias audit evaluation metrics reproducibility",
+          "relevant": [
+            "demo-audit:p2"
+          ],
+          "top": [
+            "demo-audit:p2",
+            "demo-audit:p1",
+            "demo-accessibility:p2",
+            "demo-appeals:p2",
+            "demo-explanation:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-05",
+          "query": "工作场所监控 员工邮件 告知",
+          "relevant": [
+            "demo-monitoring:p1"
+          ],
+          "top": [
+            "demo-monitoring:p1",
+            "demo-appeals:p1",
+            "demo-monitoring:p3",
+            "demo-welfare:p1",
+            "demo-wages:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-05",
+          "query": "workplace monitoring employee email notice",
+          "relevant": [
+            "demo-monitoring:p1"
+          ],
+          "top": [
+            "demo-monitoring:p1",
+            "demo-drift:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-06",
+          "query": "福利申请 资格判断 人工复核",
+          "relevant": [
+            "demo-welfare:p1"
+          ],
+          "top": [
+            "demo-welfare:p1",
+            "demo-welfare:p3",
+            "demo-appeals:p1",
+            "demo-hiring:p2",
+            "demo-insurance:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-06",
+          "query": "welfare applications eligibility human oversight",
+          "relevant": [
+            "demo-welfare:p1"
+          ],
+          "top": [
+            "demo-welfare:p1",
+            "demo-welfare:p3",
+            "demo-insurance:p2",
+            "demo-accessibility:p2",
+            "demo-explanation:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-07",
+          "query": "证据链 规则版本 发布日期 溯源",
+          "relevant": [
+            "demo-versions:p2"
+          ],
+          "top": [
+            "demo-versions:p2",
+            "demo-wages:p2",
+            "demo-versions:p3",
+            "demo-appeals:p1",
+            "demo-versions:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-07",
+          "query": "evidence trail rule version publication provenance",
+          "relevant": [
+            "demo-versions:p2"
+          ],
+          "top": [
+            "demo-versions:p2",
+            "demo-versions:p3",
+            "demo-appeals:p1",
+            "demo-drift:p2",
+            "demo-privacy:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-08",
+          "query": "训练语料最小化 重新识别风险",
+          "relevant": [
+            "demo-privacy:p2"
+          ],
+          "top": [
+            "demo-privacy:p2",
+            "demo-monitoring:p2",
+            "demo-privacy:p1",
+            "demo-welfare:p2",
+            "demo-hiring:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-08",
+          "query": "training data minimization reidentification",
+          "relevant": [
+            "demo-privacy:p2"
+          ],
+          "top": [
+            "demo-privacy:p2",
+            "demo-monitoring:p2",
+            "demo-privacy:p3",
+            "demo-explanation:p1",
+            "demo-privacy:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-09",
+          "query": "决策解释 可解释性 透明度 忠实",
+          "relevant": [
+            "demo-explanation:p2"
+          ],
+          "top": [
+            "demo-explanation:p2",
+            "demo-explanation:p3",
+            "demo-explanation:p1",
+            "demo-insurance:p3",
+            "demo-insurance:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-09",
+          "query": "decision explanations transparency faithfulness",
+          "relevant": [
+            "demo-explanation:p2"
+          ],
+          "top": [
+            "demo-explanation:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-10",
+          "query": "申诉救济 回应时间 纠错成本",
+          "relevant": [
+            "demo-appeals:p2"
+          ],
+          "top": [
+            "demo-appeals:p2",
+            "demo-wages:p2",
+            "demo-appeals:p3",
+            "demo-versions:p2",
+            "demo-versions:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-10",
+          "query": "appeals remedies correction contestation costs",
+          "relevant": [
+            "demo-appeals:p2"
+          ],
+          "top": [
+            "demo-appeals:p2",
+            "demo-appeals:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-11",
+          "query": "无障碍服务 目标群体 完成率",
+          "relevant": [
+            "demo-accessibility:p2"
+          ],
+          "top": [
+            "demo-accessibility:p2",
+            "demo-accessibility:p3",
+            "demo-audit:p1",
+            "demo-welfare:p1",
+            "demo-welfare:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-11",
+          "query": "accessible services intended users dropout",
+          "relevant": [
+            "demo-accessibility:p2"
+          ],
+          "top": [
+            "demo-accessibility:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-12",
+          "query": "模型漂移 检索召回率 固定测试集",
+          "relevant": [
+            "demo-drift:p2"
+          ],
+          "top": [
+            "demo-drift:p2",
+            "demo-drift:p3",
+            "demo-audit:p2",
+            "demo-hiring:p3",
+            "demo-accessibility:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-12",
+          "query": "model drift monitoring retrieval recall test set",
+          "relevant": [
+            "demo-drift:p2"
+          ],
+          "top": [
+            "demo-drift:p2",
+            "demo-drift:p3",
+            "demo-versions:p2",
+            "demo-audit:p2",
+            "demo-monitoring:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "challenge-en-01",
+          "query": "Can workers contest a deactivation?",
+          "relevant": [
+            "demo-appeals:p1"
+          ],
+          "top": [
+            "demo-explanation:p1",
+            "demo-wages:p1",
+            "demo-versions:p3",
+            "demo-privacy:p3",
+            "demo-privacy:p1"
+          ],
+          "recall": 0,
+          "reciprocalRank": 0.0625
+        },
+        {
+          "id": "challenge-en-02",
+          "query": "When a chatbot handles benefit forms who decides entitlement?",
+          "relevant": [
+            "demo-welfare:p1"
+          ],
+          "top": [
+            "demo-insurance:p2",
+            "demo-versions:p3",
+            "demo-privacy:p3",
+            "demo-explanation:p1",
+            "demo-privacy:p1"
+          ],
+          "recall": 0,
+          "reciprocalRank": 0.16666667
+        },
+        {
+          "id": "challenge-en-03",
+          "query": "Deleting unnecessary training fields",
+          "relevant": [
+            "demo-privacy:p2"
+          ],
+          "top": [
+            "demo-privacy:p2",
+            "demo-explanation:p2",
+            "demo-monitoring:p2",
+            "demo-explanation:p1",
+            "demo-privacy:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "challenge-zh-01",
+          "query": "机器人不能直接批准低保申请",
+          "relevant": [
+            "demo-welfare:p1"
+          ],
+          "top": [
+            "demo-welfare:p1",
+            "demo-hiring:p2",
+            "demo-drift:p3",
+            "demo-versions:p3",
+            "demo-versions:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "challenge-zh-02",
+          "query": "换城市后参保记录接不上怎么办",
+          "relevant": [
+            "demo-insurance:p1"
+          ],
+          "top": [
+            "demo-insurance:p1",
+            "demo-drift:p1",
+            "demo-wages:p2",
+            "demo-accessibility:p2",
+            "demo-versions:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "challenge-zh-03",
+          "query": "自动停单以后骑手怎样提出异议",
+          "relevant": [
+            "demo-appeals:p1",
+            "demo-appeals:p2"
+          ],
+          "top": [
+            "demo-appeals:p2",
+            "demo-appeals:p1",
+            "demo-welfare:p2",
+            "demo-audit:p3",
+            "demo-wages:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        }
+      ]
+    },
+    {
+      "method": "keyword",
+      "k": 5,
+      "count": 30,
+      "recallAtK": 0.93333333,
+      "mrr": 0.92592593,
+      "rows": [
+        {
+          "id": "zh-01",
+          "query": "招聘筛选 年龄歧视 错误排除率",
+          "relevant": [
+            "demo-hiring:p1"
+          ],
+          "top": [
+            "demo-hiring:p1",
+            "demo-drift:p2",
+            "demo-audit:p3",
+            "demo-audit:p1",
+            "demo-accessibility:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-01",
+          "query": "hiring screening age discrimination false rejection",
+          "relevant": [
+            "demo-hiring:p1"
+          ],
+          "top": [
+            "demo-hiring:p1",
+            "demo-audit:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-02",
+          "query": "工资核验 计价规则 原始工时",
+          "relevant": [
+            "demo-wages:p2"
+          ],
+          "top": [
+            "demo-wages:p2",
+            "demo-welfare:p1",
+            "demo-insurance:p2",
+            "demo-versions:p2",
+            "demo-accessibility:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-02",
+          "query": "wage verification pricing versions working hours",
+          "relevant": [
+            "demo-wages:p2"
+          ],
+          "top": [
+            "demo-wages:p2",
+            "demo-accessibility:p3",
+            "demo-audit:p2",
+            "demo-explanation:p2",
+            "demo-insurance:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-03",
+          "query": "跨地区 社会保险 缴费衔接",
+          "relevant": [
+            "demo-insurance:p1"
+          ],
+          "top": [
+            "demo-insurance:p1",
+            "demo-accessibility:p1",
+            "demo-privacy:p1",
+            "demo-insurance:p2",
+            "demo-privacy:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-03",
+          "query": "social insurance contribution portability regions",
+          "relevant": [
+            "demo-insurance:p1"
+          ],
+          "top": [
+            "demo-insurance:p1",
+            "demo-accessibility:p1",
+            "demo-insurance:p2",
+            "demo-privacy:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-04",
+          "query": "偏差审计 测试集 标注指标",
+          "relevant": [
+            "demo-audit:p2"
+          ],
+          "top": [
+            "demo-audit:p2",
+            "demo-audit:p1",
+            "demo-drift:p2",
+            "demo-drift:p3",
+            "demo-audit:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-04",
+          "query": "bias audit evaluation metrics reproducibility",
+          "relevant": [
+            "demo-audit:p2"
+          ],
+          "top": [
+            "demo-audit:p2",
+            "demo-accessibility:p2",
+            "demo-appeals:p2",
+            "demo-audit:p1",
+            "demo-explanation:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-05",
+          "query": "工作场所监控 员工邮件 告知",
+          "relevant": [
+            "demo-monitoring:p1"
+          ],
+          "top": [
+            "demo-monitoring:p1",
+            "demo-welfare:p1",
+            "demo-appeals:p1",
+            "demo-monitoring:p3",
+            "demo-monitoring:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-05",
+          "query": "workplace monitoring employee email notice",
+          "relevant": [
+            "demo-monitoring:p1"
+          ],
+          "top": [
+            "demo-monitoring:p1",
+            "demo-drift:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-06",
+          "query": "福利申请 资格判断 人工复核",
+          "relevant": [
+            "demo-welfare:p1"
+          ],
+          "top": [
+            "demo-welfare:p1",
+            "demo-appeals:p1",
+            "demo-welfare:p3",
+            "demo-monitoring:p1",
+            "demo-wages:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-06",
+          "query": "welfare applications eligibility human oversight",
+          "relevant": [
+            "demo-welfare:p1"
+          ],
+          "top": [
+            "demo-welfare:p1",
+            "demo-welfare:p3",
+            "demo-accessibility:p2",
+            "demo-appeals:p1",
+            "demo-explanation:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-07",
+          "query": "证据链 规则版本 发布日期 溯源",
+          "relevant": [
+            "demo-versions:p2"
+          ],
+          "top": [
+            "demo-versions:p2",
+            "demo-audit:p2",
+            "demo-versions:p3",
+            "demo-wages:p2",
+            "demo-versions:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-07",
+          "query": "evidence trail rule version publication provenance",
+          "relevant": [
+            "demo-versions:p2"
+          ],
+          "top": [
+            "demo-versions:p2",
+            "demo-versions:p3",
+            "demo-appeals:p1",
+            "demo-drift:p2",
+            "demo-hiring:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-08",
+          "query": "训练语料最小化 重新识别风险",
+          "relevant": [
+            "demo-privacy:p2"
+          ],
+          "top": [
+            "demo-privacy:p2",
+            "demo-monitoring:p2",
+            "demo-privacy:p1",
+            "demo-welfare:p2",
+            "demo-hiring:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-08",
+          "query": "training data minimization reidentification",
+          "relevant": [
+            "demo-privacy:p2"
+          ],
+          "top": [
+            "demo-monitoring:p2",
+            "demo-privacy:p2",
+            "demo-explanation:p1",
+            "demo-privacy:p1",
+            "demo-privacy:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 0.5
+        },
+        {
+          "id": "zh-09",
+          "query": "决策解释 可解释性 透明度 忠实",
+          "relevant": [
+            "demo-explanation:p2"
+          ],
+          "top": [
+            "demo-explanation:p2",
+            "demo-explanation:p1",
+            "demo-explanation:p3",
+            "demo-audit:p1",
+            "demo-hiring:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-09",
+          "query": "decision explanations transparency faithfulness",
+          "relevant": [
+            "demo-explanation:p2"
+          ],
+          "top": [
+            "demo-explanation:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-10",
+          "query": "申诉救济 回应时间 纠错成本",
+          "relevant": [
+            "demo-appeals:p2"
+          ],
+          "top": [
+            "demo-appeals:p2",
+            "demo-versions:p2",
+            "demo-wages:p2",
+            "demo-drift:p2",
+            "demo-versions:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-10",
+          "query": "appeals remedies correction contestation costs",
+          "relevant": [
+            "demo-appeals:p2"
+          ],
+          "top": [
+            "demo-appeals:p2",
+            "demo-appeals:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-11",
+          "query": "无障碍服务 目标群体 完成率",
+          "relevant": [
+            "demo-accessibility:p2"
+          ],
+          "top": [
+            "demo-accessibility:p2",
+            "demo-accessibility:p3",
+            "demo-audit:p1",
+            "demo-welfare:p1",
+            "demo-accessibility:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-11",
+          "query": "accessible services intended users dropout",
+          "relevant": [
+            "demo-accessibility:p2"
+          ],
+          "top": [
+            "demo-accessibility:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "zh-12",
+          "query": "模型漂移 检索召回率 固定测试集",
+          "relevant": [
+            "demo-drift:p2"
+          ],
+          "top": [
+            "demo-drift:p2",
+            "demo-audit:p2",
+            "demo-drift:p3",
+            "demo-audit:p1",
+            "demo-drift:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "en-12",
+          "query": "model drift monitoring retrieval recall test set",
+          "relevant": [
+            "demo-drift:p2"
+          ],
+          "top": [
+            "demo-drift:p2",
+            "demo-audit:p2",
+            "demo-drift:p3",
+            "demo-versions:p2",
+            "demo-audit:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "challenge-en-01",
+          "query": "Can workers contest a deactivation?",
+          "relevant": [
+            "demo-appeals:p1"
+          ],
+          "top": [
+            "demo-explanation:p1",
+            "demo-privacy:p1",
+            "demo-privacy:p3",
+            "demo-versions:p3",
+            "demo-wages:p1"
+          ],
+          "recall": 0,
+          "reciprocalRank": 0.11111111
+        },
+        {
+          "id": "challenge-en-02",
+          "query": "When a chatbot handles benefit forms who decides entitlement?",
+          "relevant": [
+            "demo-welfare:p1"
+          ],
+          "top": [
+            "demo-explanation:p1",
+            "demo-insurance:p2",
+            "demo-privacy:p1",
+            "demo-privacy:p3",
+            "demo-versions:p3"
+          ],
+          "recall": 0,
+          "reciprocalRank": 0.16666667
+        },
+        {
+          "id": "challenge-en-03",
+          "query": "Deleting unnecessary training fields",
+          "relevant": [
+            "demo-privacy:p2"
+          ],
+          "top": [
+            "demo-privacy:p2",
+            "demo-explanation:p1",
+            "demo-explanation:p2",
+            "demo-monitoring:p2",
+            "demo-privacy:p1"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "challenge-zh-01",
+          "query": "机器人不能直接批准低保申请",
+          "relevant": [
+            "demo-welfare:p1"
+          ],
+          "top": [
+            "demo-welfare:p1",
+            "demo-hiring:p2",
+            "demo-drift:p3",
+            "demo-appeals:p1",
+            "demo-explanation:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "challenge-zh-02",
+          "query": "换城市后参保记录接不上怎么办",
+          "relevant": [
+            "demo-insurance:p1"
+          ],
+          "top": [
+            "demo-insurance:p1",
+            "demo-drift:p1",
+            "demo-explanation:p2",
+            "demo-hiring:p2",
+            "demo-versions:p2"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        },
+        {
+          "id": "challenge-zh-03",
+          "query": "自动停单以后骑手怎样提出异议",
+          "relevant": [
+            "demo-appeals:p1",
+            "demo-appeals:p2"
+          ],
+          "top": [
+            "demo-appeals:p2",
+            "demo-appeals:p1",
+            "demo-wages:p1",
+            "demo-welfare:p2",
+            "demo-audit:p3"
+          ],
+          "recall": 1,
+          "reciprocalRank": 1
+        }
+      ]
+    }
+  ]
+}
